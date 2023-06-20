@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49133566-d4de-470b-98e8-2d06628d33a2" name="Changes" comment="" />
+    <list default="true" id="49133566-d4de-470b-98e8-2d06628d33a2" name="Changes" comment="Add bruteforce 2399">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bruteforce/_1051.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bruteforce/_13225.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dynamic_programming/_2229.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/implementation/_8981.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,8 +23,25 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="11" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="11" />
   </component>
   <component name="ProjectId" id="2RB9KQgSSTOz0IVUJlAfjtWEkYV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -24,15 +49,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -41,8 +73,98 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1686712542918</updated>
-      <workItem from="1686712544216" duration="2000" />
+      <workItem from="1686712544216" duration="919000" />
+      <workItem from="1686713571502" duration="120000" />
+      <workItem from="1686725048727" duration="1812000" />
+      <workItem from="1686727560453" duration="133000" />
+      <workItem from="1686784912640" duration="821000" />
+      <workItem from="1686893470109" duration="3741000" />
+      <workItem from="1686976661213" duration="1591000" />
+      <workItem from="1686985062849" duration="2319000" />
+      <workItem from="1686990957607" duration="1372000" />
+      <workItem from="1687058483817" duration="2398000" />
+      <workItem from="1687134640380" duration="795000" />
+      <workItem from="1687252423624" duration="760000" />
     </task>
+    <task id="LOCAL-00001" summary="Add bruteforce 1018">
+      <created>1686713458375</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686713458375</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add bruteforce 2798">
+      <created>1686794595740</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686794595740</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add string 2386">
+      <created>1686893526178</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1686893526178</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add bruteforce 1681">
+      <created>1686980454538</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686980454538</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add bruteforce 1773">
+      <created>1687060762803</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1687060762803</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add math 15996">
+      <created>1687060897221</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1687060897221</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add math 28236">
+      <created>1687135400362</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1687135400362</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add bruteforce 3040">
+      <created>1687135431076</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1687135431076</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add bruteforce 2399">
+      <created>1687252457055</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1687252457055</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add bruteforce 1018" />
+    <MESSAGE value="Add bruteforce 2798" />
+    <MESSAGE value="Add string 2386" />
+    <MESSAGE value="Add bruteforce 1681" />
+    <MESSAGE value="Add bruteforce 1773" />
+    <MESSAGE value="Add math 15996" />
+    <MESSAGE value="Add math 28236" />
+    <MESSAGE value="Add bruteforce 3040" />
+    <MESSAGE value="Add bruteforce 2399" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add bruteforce 2399" />
   </component>
 </project>
