@@ -1,4 +1,4 @@
-package bruteforce.silver.silver_3;
+package greedy.silver.silver_3;
 import java.io.*;
 import java.util.Arrays;
 import java.util.StringTokenizer;
