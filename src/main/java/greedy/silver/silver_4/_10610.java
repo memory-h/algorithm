@@ -2,9 +2,9 @@ package greedy.silver.silver_4;
 import java.io.*;
 import java.util.Arrays;
 public class _10610 {
-    static int sum = 0;
+    private static boolean checkNumber(char[] arr) {
+        int sum = 0;
 
-    private static boolean findNumber(char[] arr) {
         for(char c : arr) {
            sum += c;
         }
@@ -20,10 +20,12 @@ public class _10610 {
 
         for(int i = 0; i < n.length(); i++) arr[i] = n.charAt(i);
 
+        // 정렬
         Arrays.sort(arr);
         sb = new StringBuilder(new String(arr));
 
-        if(arr[0] == '0' && findNumber(arr)) bw.write(sb.reverse().toString());
+        // 0번째 index가 0이고, arr 원소를 전부 더했을 때 3으로 나누어 떨어지는지 확인
+        if(arr[0] == '0' && checkNumber(arr)) bw.write(sb.reverse().toString());
         else bw.write("-1");
 
         bw.flush();
