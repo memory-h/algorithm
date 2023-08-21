@@ -1,6 +1,6 @@
 package greedy.gold.gold_5;
 import java.io.*;
-public class _12904 { // 주어진 조건을 반대로 생각해서 푸는게 핵심
+    public class _12904 { // 주어진 조건을 반대로 생각해서 푸는 것이 핵심
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
