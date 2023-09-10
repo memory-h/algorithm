@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49133566-d4de-470b-98e8-2d06628d33a2" name="Changes" comment="Add bruteforce 2399">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bruteforce/_1051.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bruteforce/_13225.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dynamic_programming/_2229.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/implementation/_8981.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="49133566-d4de-470b-98e8-2d06628d33a2" name="Changes" comment="20115 에너지 드링크">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/back_tracking/gold/gold_4/_9663.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/testcode/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testcode/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,15 +23,42 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="package-info" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Hyeon-zero&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="7ef26de6-5fc2-4ee1-9ac6-02acc90e7fc1" />
+        <option name="url" value="https://github.com/Hyeon-zero/Algorithm.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -43,10 +70,12 @@
   <component name="MavenRunner">
     <option name="jreName" value="11" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2RB9KQgSSTOz0IVUJlAfjtWEkYV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
@@ -55,13 +84,18 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hyeon-young/Data/IntelliJ-Workspace/algorithm&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.36206895&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -85,6 +119,147 @@
       <workItem from="1687058483817" duration="2398000" />
       <workItem from="1687134640380" duration="795000" />
       <workItem from="1687252423624" duration="760000" />
+      <workItem from="1687273176909" duration="673000" />
+      <workItem from="1687331318644" duration="543000" />
+      <workItem from="1687365807589" duration="817000" />
+      <workItem from="1687405486420" duration="25000" />
+      <workItem from="1687405531928" duration="148000" />
+      <workItem from="1687505572709" duration="832000" />
+      <workItem from="1687519103651" duration="4931000" />
+      <workItem from="1687699992777" duration="2217000" />
+      <workItem from="1687760240993" duration="2074000" />
+      <workItem from="1687822783788" duration="3042000" />
+      <workItem from="1687910328367" duration="1870000" />
+      <workItem from="1687930103025" duration="4168000" />
+      <workItem from="1688001198605" duration="1643000" />
+      <workItem from="1688094417755" duration="1286000" />
+      <workItem from="1688128679778" duration="861000" />
+      <workItem from="1688179605644" duration="3110000" />
+      <workItem from="1688205939017" duration="4677000" />
+      <workItem from="1688268764528" duration="1806000" />
+      <workItem from="1688284585011" duration="58000" />
+      <workItem from="1688354296877" duration="2778000" />
+      <workItem from="1688445939461" duration="3716000" />
+      <workItem from="1688527694730" duration="888000" />
+      <workItem from="1688622627072" duration="3410000" />
+      <workItem from="1688640411277" duration="2189000" />
+      <workItem from="1688699284565" duration="791000" />
+      <workItem from="1688700274069" duration="866000" />
+      <workItem from="1688746441687" duration="284000" />
+      <workItem from="1688790472559" duration="597000" />
+      <workItem from="1688791077238" duration="4852000" />
+      <workItem from="1688800167120" duration="205000" />
+      <workItem from="1688874434014" duration="1618000" />
+      <workItem from="1688876157688" duration="65000" />
+      <workItem from="1688899428623" duration="1797000" />
+      <workItem from="1688964623120" duration="1182000" />
+      <workItem from="1688965970905" duration="7000" />
+      <workItem from="1688981510369" duration="2347000" />
+      <workItem from="1689052829565" duration="1773000" />
+      <workItem from="1689081693063" duration="5000" />
+      <workItem from="1689090151872" duration="1000" />
+      <workItem from="1689131955570" duration="646000" />
+      <workItem from="1689222025531" duration="5944000" />
+      <workItem from="1689296980538" duration="3325000" />
+      <workItem from="1689305137252" duration="7000" />
+      <workItem from="1689352295188" duration="5581000" />
+      <workItem from="1689486290260" duration="4149000" />
+      <workItem from="1689577803588" duration="13963000" />
+      <workItem from="1689655824437" duration="2187000" />
+      <workItem from="1689664015552" duration="341000" />
+      <workItem from="1689739563889" duration="11000" />
+      <workItem from="1689739577525" duration="23000" />
+      <workItem from="1689739636777" duration="16926000" />
+      <workItem from="1689827471938" duration="483000" />
+      <workItem from="1689827969815" duration="251000" />
+      <workItem from="1689907610638" duration="273000" />
+      <workItem from="1689992560552" duration="7543000" />
+      <workItem from="1690048017002" duration="1150000" />
+      <workItem from="1690096431355" duration="238000" />
+      <workItem from="1690159732135" duration="73000" />
+      <workItem from="1690159812977" duration="10029000" />
+      <workItem from="1690178385658" duration="138000" />
+      <workItem from="1690251802840" duration="2498000" />
+      <workItem from="1690282869488" duration="2651000" />
+      <workItem from="1690287390874" duration="2007000" />
+      <workItem from="1690305271473" duration="6024000" />
+      <workItem from="1690312228059" duration="1290000" />
+      <workItem from="1690360025684" duration="1426000" />
+      <workItem from="1690415110331" duration="8350000" />
+      <workItem from="1690459741982" duration="417000" />
+      <workItem from="1690460388918" duration="223000" />
+      <workItem from="1690509312008" duration="4286000" />
+      <workItem from="1690536907735" duration="13623000" />
+      <workItem from="1690608461553" duration="39000" />
+      <workItem from="1690608504343" duration="13324000" />
+      <workItem from="1690722483114" duration="2394000" />
+      <workItem from="1690779995760" duration="8548000" />
+      <workItem from="1690819557189" duration="1000" />
+      <workItem from="1690857148801" duration="6400000" />
+      <workItem from="1691039977536" duration="1000" />
+      <workItem from="1691039990070" duration="9430000" />
+      <workItem from="1691157391743" duration="4356000" />
+      <workItem from="1691201909845" duration="4839000" />
+      <workItem from="1691297449283" duration="17026000" />
+      <workItem from="1691369127370" duration="9662000" />
+      <workItem from="1691462434313" duration="3122000" />
+      <workItem from="1691552298763" duration="2475000" />
+      <workItem from="1691643665628" duration="1005000" />
+      <workItem from="1691658698362" duration="969000" />
+      <workItem from="1691727541664" duration="38000" />
+      <workItem from="1691727602727" duration="661000" />
+      <workItem from="1691812423411" duration="108000" />
+      <workItem from="1691812541851" duration="217000" />
+      <workItem from="1691812766769" duration="114000" />
+      <workItem from="1691812898749" duration="47000" />
+      <workItem from="1691812958281" duration="30000" />
+      <workItem from="1691813002398" duration="4115000" />
+      <workItem from="1691845882722" duration="1750000" />
+      <workItem from="1691902085247" duration="948000" />
+      <workItem from="1691919287630" duration="1777000" />
+      <workItem from="1691974639161" duration="2160000" />
+      <workItem from="1692068786915" duration="4138000" />
+      <workItem from="1692145772811" duration="1736000" />
+      <workItem from="1692158369851" duration="1636000" />
+      <workItem from="1692244130572" duration="954000" />
+      <workItem from="1692274694171" duration="3690000" />
+      <workItem from="1692327918900" duration="2009000" />
+      <workItem from="1692419142011" duration="430000" />
+      <workItem from="1692425191545" duration="2000" />
+      <workItem from="1692521971309" duration="1978000" />
+      <workItem from="1692600970692" duration="3296000" />
+      <workItem from="1692606519496" duration="330000" />
+      <workItem from="1692613535514" duration="2553000" />
+      <workItem from="1692616475634" duration="56000" />
+      <workItem from="1692620775717" duration="14175000" />
+      <workItem from="1692699087916" duration="608000" />
+      <workItem from="1692769597113" duration="3388000" />
+      <workItem from="1692797593177" duration="1492000" />
+      <workItem from="1692853043948" duration="28000" />
+      <workItem from="1692853094703" duration="7195000" />
+      <workItem from="1692892189823" duration="12614000" />
+      <workItem from="1693126955991" duration="2521000" />
+      <workItem from="1693154242168" duration="7983000" />
+      <workItem from="1693232862070" duration="5880000" />
+      <workItem from="1693324749090" duration="255000" />
+      <workItem from="1693325008041" duration="2384000" />
+      <workItem from="1693369080853" duration="13000" />
+      <workItem from="1693369099785" duration="88000" />
+      <workItem from="1693416037121" duration="3867000" />
+      <workItem from="1693492885315" duration="31000" />
+      <workItem from="1693496771898" duration="8784000" />
+      <workItem from="1693713987827" duration="3462000" />
+      <workItem from="1693730585953" duration="786000" />
+      <workItem from="1693787134980" duration="5805000" />
+      <workItem from="1693835790505" duration="3012000" />
+      <workItem from="1693926417428" duration="5742000" />
+      <workItem from="1694048153140" duration="2863000" />
+      <workItem from="1694076376628" duration="1209000" />
+      <workItem from="1694097663225" duration="2732000" />
+      <workItem from="1694236132696" duration="77000" />
+      <workItem from="1694236217596" duration="3698000" />
+      <workItem from="1694255398291" duration="84000" />
+      <workItem from="1694272697235" duration="4498000" />
     </task>
     <task id="LOCAL-00001" summary="Add bruteforce 1018">
       <created>1686713458375</created>
@@ -149,22 +324,375 @@
       <option name="project" value="LOCAL" />
       <updated>1687252457055</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Update xml">
+      <created>1687273241767</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1687273241767</updated>
+    </task>
+    <task id="LOCAL-00080" summary="28455 Union Maplestory">
+      <option name="closed" value="true" />
+      <created>1691976829495</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1691976829496</updated>
+    </task>
+    <task id="LOCAL-00081" summary="5635 생일">
+      <option name="closed" value="true" />
+      <created>1692072312722</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1692072312723</updated>
+    </task>
+    <task id="LOCAL-00082" summary="28444 HI-ARC=?">
+      <option name="closed" value="true" />
+      <created>1692072721291</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1692072721291</updated>
+    </task>
+    <task id="LOCAL-00083" summary="28445 알록달록 앵무새">
+      <option name="closed" value="true" />
+      <created>1692072840558</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1692072840558</updated>
+    </task>
+    <task id="LOCAL-00084" summary="28446 볼링공 찾아주기">
+      <option name="closed" value="true" />
+      <created>1692072932408</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1692072932408</updated>
+    </task>
+    <task id="LOCAL-00085" summary="1246 온라인 판매">
+      <option name="closed" value="true" />
+      <created>1692148888003</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1692148888003</updated>
+    </task>
+    <task id="LOCAL-00086" summary="2225 합분해">
+      <option name="closed" value="true" />
+      <created>1692159166308</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1692159166309</updated>
+    </task>
+    <task id="LOCAL-00087" summary="1758 알바생 강호">
+      <option name="closed" value="true" />
+      <created>1692245075862</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1692245075863</updated>
+    </task>
+    <task id="LOCAL-00088" summary="12865 평범한 배낭">
+      <option name="closed" value="true" />
+      <created>1692329918776</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1692329918776</updated>
+    </task>
+    <task id="LOCAL-00089" summary="2847 게임을 만든 동준이">
+      <option name="closed" value="true" />
+      <created>1692419336563</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1692419336563</updated>
+    </task>
+    <task id="LOCAL-00090" summary="10610 30">
+      <option name="closed" value="true" />
+      <created>1692523226528</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1692523226529</updated>
+    </task>
+    <task id="LOCAL-00091" summary="10610 30">
+      <option name="closed" value="true" />
+      <created>1692523772185</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1692523772185</updated>
+    </task>
+    <task id="LOCAL-00092" summary="1339 단어 수학">
+      <option name="closed" value="true" />
+      <created>1692605979085</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1692605979085</updated>
+    </task>
+    <task id="LOCAL-00093" summary="9251 LCS">
+      <option name="closed" value="true" />
+      <created>1692616516893</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1692616516894</updated>
+    </task>
+    <task id="LOCAL-00094" summary="12904 A와 B">
+      <option name="closed" value="true" />
+      <created>1692635236594</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1692635236594</updated>
+    </task>
+    <task id="LOCAL-00095" summary="12904 A와 B">
+      <option name="closed" value="true" />
+      <created>1692635383795</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1692635383795</updated>
+    </task>
+    <task id="LOCAL-00096" summary="9935 문자열 폭발">
+      <option name="closed" value="true" />
+      <created>1692677500118</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1692677500118</updated>
+    </task>
+    <task id="LOCAL-00097" summary="1958 LCS 3">
+      <option name="closed" value="true" />
+      <created>1692677593998</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1692677593998</updated>
+    </task>
+    <task id="LOCAL-00098" summary="9252 LCS 2">
+      <option name="closed" value="true" />
+      <created>1692779003013</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1692779003013</updated>
+    </task>
+    <task id="LOCAL-00099" summary="15482 한글 LCS">
+      <option name="closed" value="true" />
+      <created>1692779972997</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1692779972997</updated>
+    </task>
+    <task id="LOCAL-00100" summary="2166 다각형의 면적">
+      <option name="closed" value="true" />
+      <created>1692852925666</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1692852925666</updated>
+    </task>
+    <task id="LOCAL-00101" summary="10655 마라톤 1">
+      <option name="closed" value="true" />
+      <created>1692880236572</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1692880236572</updated>
+    </task>
+    <task id="LOCAL-00102" summary="5582 공통 부분 문자열">
+      <option name="closed" value="true" />
+      <created>1692929015403</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1692929015404</updated>
+    </task>
+    <task id="LOCAL-00103" summary="11508 2+1 세일">
+      <option name="closed" value="true" />
+      <created>1693059320919</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1693059320919</updated>
+    </task>
+    <task id="LOCAL-00104" summary="13413 오셀로 재배치">
+      <option name="closed" value="true" />
+      <created>1693130490428</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1693130490429</updated>
+    </task>
+    <task id="LOCAL-00105" summary="12782 비트 우정지수">
+      <option name="closed" value="true" />
+      <created>1693190876067</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1693190876068</updated>
+    </task>
+    <task id="LOCAL-00106" summary="17521 Byte Coin">
+      <option name="closed" value="true" />
+      <created>1693266927388</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1693266927388</updated>
+    </task>
+    <task id="LOCAL-00107" summary="14469 소가 길을 건너간 이유 3">
+      <option name="closed" value="true" />
+      <created>1693353830659</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1693353830660</updated>
+    </task>
+    <task id="LOCAL-00108" summary="19939 박 터뜨리기">
+      <option name="closed" value="true" />
+      <created>1693453621407</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1693453621407</updated>
+    </task>
+    <task id="LOCAL-00109" summary="20044 Project Teams">
+      <option name="closed" value="true" />
+      <created>1693526977760</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1693526977760</updated>
+    </task>
+    <task id="LOCAL-00110" summary="25379 피하자">
+      <option name="closed" value="true" />
+      <created>1693627256702</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1693627256702</updated>
+    </task>
+    <task id="LOCAL-00111" summary="1213 팰린드롬 만들기">
+      <option name="closed" value="true" />
+      <created>1693722890349</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1693722890350</updated>
+    </task>
+    <task id="LOCAL-00112" summary="1449 수리공 항승">
+      <option name="closed" value="true" />
+      <created>1693802735433</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1693802735434</updated>
+    </task>
+    <task id="LOCAL-00113" summary="2012 등수 매기기">
+      <option name="closed" value="true" />
+      <created>1693871630253</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1693871630253</updated>
+    </task>
+    <task id="LOCAL-00114" summary="5545 최고의 피자">
+      <option name="closed" value="true" />
+      <created>1693957735922</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1693957735922</updated>
+    </task>
+    <task id="LOCAL-00115" summary="12018 Yonsei TOTO">
+      <option name="closed" value="true" />
+      <created>1694048566513</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1694048566513</updated>
+    </task>
+    <task id="LOCAL-00116" summary="13305 주유소">
+      <option name="closed" value="true" />
+      <created>1694130698892</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1694130698892</updated>
+    </task>
+    <task id="LOCAL-00117" summary="19941 햄버거 분배">
+      <option name="closed" value="true" />
+      <created>1694250852897</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1694250852898</updated>
+    </task>
+    <task id="LOCAL-00118" summary="20115 에너지 드링크">
+      <option name="closed" value="true" />
+      <created>1694315750117</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1694315750117</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add bruteforce 1018" />
-    <MESSAGE value="Add bruteforce 2798" />
-    <MESSAGE value="Add string 2386" />
-    <MESSAGE value="Add bruteforce 1681" />
-    <MESSAGE value="Add bruteforce 1773" />
-    <MESSAGE value="Add math 15996" />
-    <MESSAGE value="Add math 28236" />
-    <MESSAGE value="Add bruteforce 3040" />
-    <MESSAGE value="Add bruteforce 2399" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add bruteforce 2399" />
+    <MESSAGE value="9251 LCS" />
+    <MESSAGE value="12904 A와 B" />
+    <MESSAGE value="9935 문자열 폭발" />
+    <MESSAGE value="1958 LCS 3" />
+    <MESSAGE value="9252 LCS 2" />
+    <MESSAGE value="15482 한글 LCS" />
+    <MESSAGE value="2166 다각형의 면적" />
+    <MESSAGE value="10655 마라톤 1" />
+    <MESSAGE value="5582 공통 부분 문자열" />
+    <MESSAGE value="11508 2+1 세일" />
+    <MESSAGE value="13413 오셀로 재배치" />
+    <MESSAGE value="12782 비트 우정지수" />
+    <MESSAGE value="17521 Byte Coin" />
+    <MESSAGE value="14469 소가 길을 건너간 이유 3" />
+    <MESSAGE value="19939 박 터뜨리기" />
+    <MESSAGE value="20044 Project Teams" />
+    <MESSAGE value="25379 피하자" />
+    <MESSAGE value="1213 팰린드롬 만들기" />
+    <MESSAGE value="1449 수리공 항승" />
+    <MESSAGE value="2012 등수 매기기" />
+    <MESSAGE value="5545 최고의 피자" />
+    <MESSAGE value="12018 Yonsei TOTO" />
+    <MESSAGE value="13305 주유소" />
+    <MESSAGE value="19941 햄버거 분배" />
+    <MESSAGE value="20115 에너지 드링크" />
+    <option name="LAST_COMMIT_MESSAGE" value="20115 에너지 드링크" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.StringIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
