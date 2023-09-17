@@ -5,7 +5,7 @@ public class _1541 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        // "-" 기준으로 분리하여 계산하면 합의 최소가 된다.
+        // "-" 기준으로 분리하여 계산하면 식의 값을 최소로 만들 수 있다.
         String[] str = br.readLine().split("-");
 
         int result = 0;
