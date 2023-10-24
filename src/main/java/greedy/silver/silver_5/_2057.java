@@ -15,7 +15,7 @@ public class _2057 {
             for (int i = 20; i >= 0; i--) {
                 long factorial = 1L;
 
-                // 팩토리얼를 구한다.
+                // factorial 구하기
                 for (int j = 1; j <= i; j++) factorial *= j;
 
                 // n이 factorial 보다 작거나 같으면 빼준다.
