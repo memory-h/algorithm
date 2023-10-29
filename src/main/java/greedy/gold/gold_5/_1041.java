@@ -29,7 +29,7 @@ public class _1041 {
         long threeSide = 4;
 
         // 2개의 면이 보이는 개수
-        long twoSide = 8L * (n - 2) + 4;
+        long twoSide = 4L * (n - 1) + 4L * (n - 2);
 
         // 1개의 면이 보이는 개수
         long oneSide = 4L * (n - 1) * (n - 2) + (long) (n - 2) * (n - 2);
