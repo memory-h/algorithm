@@ -28,6 +28,10 @@ public class _7685 {
 
             if (grundy == 0) sb.append(0 + "\n");
             else {
+                /*
+                 i번째 돌무더기를 제외한 나머지 모든 돌무더기를 XOR 해준다.
+                 0 XOR temp부터 (arr[i] - 1) XOR temp 중에서 0이 될 수 있는 것을 찾는다.
+                 */
                 for (int i = 0; i < n; i++) {
                     int temp = 0;
 
