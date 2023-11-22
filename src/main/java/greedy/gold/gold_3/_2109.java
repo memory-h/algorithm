@@ -33,7 +33,7 @@ public class _2109 {
         int result = 0;
 
         for (int i = 0; i < n; i++) {
-            // d일 안에 외서 강연을 하면 되므로, d일에 강연을 했으면 체크하면서 최대로 벌 수 있는 돈을 구한다.
+            // d일 안에 와서 강연을 하면 되므로, d일에 강연을 했으면 체크하면서 최대로 벌 수 있는 돈을 구한다.
             for (int j = arr[i][1]; j > 0; j--) {
                 if (!isCheck[j]) {
                     isCheck[j] = true;
