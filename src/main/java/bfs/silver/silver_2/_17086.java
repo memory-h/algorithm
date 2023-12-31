@@ -1,4 +1,4 @@
-package bfs.silver.silver_1;
+package bfs.silver.silver_2;
 
 import java.io.*;
 import java.util.LinkedList;
