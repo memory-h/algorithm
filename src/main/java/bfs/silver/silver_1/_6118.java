@@ -77,8 +77,8 @@ public class _6118 {
     }
 
     static class Node {
-        private final int edge;
-        private final int weight;
+        private int edge;
+        private int weight;
 
         public Node(int edge, int weight) {
             this.edge = edge;
