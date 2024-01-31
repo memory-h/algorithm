@@ -9,7 +9,6 @@ import java.util.StringTokenizer;
 public class _13913 {
 
     static int n, k, time;
-    static int[] graph;
     static int[] arr;
     static boolean[] visited;
 
@@ -24,7 +23,6 @@ public class _13913 {
         n = Integer.parseInt(st.nextToken());
         k = Integer.parseInt(st.nextToken());
 
-        graph = new int[100001];
         arr = new int[100001];
         visited = new boolean[100001];
 
