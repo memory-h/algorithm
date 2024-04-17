@@ -1,4 +1,4 @@
-package stack.silver.silver_5;
+package stack.silver.silver_3;
 
 import java.io.*;
 import java.util.Stack;
