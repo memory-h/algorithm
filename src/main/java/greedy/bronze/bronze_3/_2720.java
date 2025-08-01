@@ -1,25 +1,33 @@
 package greedy.bronze.bronze_3;
-import java.util.Scanner;
+
+import java.io.*;
+
 public class _2720 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int T = sc.nextInt();
 
-        for(int i = 0; i < T; i++){
-            int M = sc.nextInt();
-            int A = 0, B = 0, C = 0, D = 0;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder();
 
-            A += M / 25;
-            M %= 25;
-            B += M / 10;
-            M %= 10;
-            C += M / 5;
-            M %= 5;
-            D += M / 1;
-            M %= 1;
+        int testCases = Integer.parseInt(br.readLine());
 
-            System.out.println(A + " " + B + " " + C + " " + D);
+        while (testCases-- > 0) {
+            int[] change = new int[] {25, 10, 5, 1};
+            int c = Integer.parseInt(br.readLine());
+
+            while (c > 0) {
+                for (int val : change) {
+                    sb.append(c / val)
+                            .append(" ");
+                    c %= val;
+                }
+            }
+            sb.append("\n");
         }
-        sc.close();
+
+        bw.write(sb.toString());
+        bw.flush();
+        bw.close();
     }
+
 }
