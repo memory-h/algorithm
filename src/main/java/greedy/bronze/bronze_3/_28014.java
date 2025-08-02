@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 public class _28014 {
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -11,19 +12,24 @@ public class _28014 {
 
         int n = Integer.parseInt(br.readLine());
 
-        int temp = 0;
-        int count = 0;
+        int[] steeples = new int[n];
 
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
-            int h = Integer.parseInt(st.nextToken());
+            steeples[i] = Integer.parseInt(st.nextToken());
+        }
 
-            if (h >= temp) count++;
-            temp = h;
+        int count = 1;
+
+        for (int i = 0; i < n - 1; i++) {
+            if (steeples[i] <= steeples[i + 1]) {
+                count++;
+            }
         }
 
         bw.write(String.valueOf(count));
         bw.flush();
         bw.close();
     }
+
 }
