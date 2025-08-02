@@ -1,18 +1,30 @@
 package greedy.bronze.bronze_3;
-import java.util.Scanner;
+
+import java.io.*;
+import java.util.StringTokenizer;
+
 public class _11034 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        while(sc.hasNextInt()){
-            int A = sc.nextInt();
-            int B = sc.nextInt();
-            int C = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st;
 
-            int max = Math.max((B - A - 1), (C - B - 1));
+        String input;
 
-            System.out.println(max);
+        while ((input = br.readLine()) != null) {
+            st = new StringTokenizer(input);
+
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+            int c = Integer.parseInt(st.nextToken());
+
+            bw.write(String.valueOf(Math.max(b - a - 1, c - b - 1)));
+            bw.newLine();
         }
-        sc.close();
+
+        bw.flush();
+        bw.close();
     }
+
 }
