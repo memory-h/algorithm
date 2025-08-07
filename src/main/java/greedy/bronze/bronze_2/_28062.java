@@ -1,7 +1,6 @@
 package greedy.bronze.bronze_2;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class _28062 {
@@ -14,29 +13,22 @@ public class _28062 {
         int n = Integer.parseInt(br.readLine());
 
         int[] arr = new int[n];
-        int total = 0;
+        int sum = 0;
+        int minOdd = Integer.MAX_VALUE;
 
         st = new StringTokenizer(br.readLine());
-
         for (int i = 0; i < n; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
-            total += arr[i];
-        }
+            sum += arr[i];
 
-        Arrays.sort(arr);
-
-        if (total % 2 != 0) {
-            // 총합이 홀수인 경우, 가장 작은 홀수를 찾아 뺀다.
-            for (int i : arr) {
-                if (i % 2 != 0) {
-                    total -= i;
-                    break;
-                }
+            if (arr[i] % 2 != 0) {
+                minOdd = Math.min(minOdd, arr[i]);
             }
         }
 
-        bw.write(String.valueOf(total));
+        bw.write(String.valueOf(sum % 2 != 0 ? sum - minOdd : sum));
         bw.flush();
         bw.close();
     }
+
 }
