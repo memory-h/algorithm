@@ -1,30 +1,30 @@
 package greedy.bronze.bronze_1;
-import java.util.Scanner;
+
+import java.io.*;
+
 public class _2810 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        int N = sc.nextInt();
-        int count = 1;
-        String s = sc.next();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        for(int i = 0; i < N; i++){
-            char c = s.charAt(i);
+        int n = Integer.parseInt(br.readLine());
+        String seats = br.readLine();
 
-            if(c == 'S'){
-                count++;
-            }
-            else if(c == 'L'){
+        int coupleSeatsCount = 0;
+
+        for (int i = 0; i < n - 1; i++) {
+            if (seats.charAt(i) == 'L' && seats.charAt(i + 1) == 'L') {
+                coupleSeatsCount++;
                 i++;
-                count++;
             }
         }
-        sc.close();
 
-        if(count > N){
-            System.out.println(N);
-        }
-        else
-            System.out.println(count);
+        int cupHolders = n + 1 - coupleSeatsCount;
+
+        bw.write(String.valueOf(Math.min(cupHolders, n)));
+        bw.flush();
+        bw.close();
     }
+
 }
