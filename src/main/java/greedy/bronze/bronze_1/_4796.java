@@ -1,26 +1,39 @@
 package greedy.bronze.bronze_1;
-import java.util.Scanner;
-public class _4796 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int total = 0;
-        int count = 0;
 
-        for(int i = 0; i >= 0; i++){
-            int L = sc.nextInt();
-            int P = sc.nextInt();
-            int V = sc.nextInt();
-            count++;
-            if(L == 0 && P == 0 && V == 0){
+import java.io.*;
+import java.util.StringTokenizer;
+
+public class _4796 {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+
+        int testCases = 1;
+
+        while (true) {
+            st = new StringTokenizer(br.readLine());
+
+            int l = Integer.parseInt(st.nextToken());
+            int p = Integer.parseInt(st.nextToken());
+            int v = Integer.parseInt(st.nextToken());
+
+            if (l == 0 && p == 0 && v == 0) {
                 break;
             }
-            else {
-                total = (((V / P) * L) + Math.min((V % P), L));
-                System.out.println("Case " + count + ": " + total);
-            }
+
+            sb.append("Case ").append(testCases++).append(": ")
+                    .append(v / p * l + Math.min(v % p, l))
+                    .append("\n");
         }
-        sc.close();
+
+        bw.write(sb.toString());
+        bw.flush();
+        bw.close();
     }
+
 }
 /*
  * 3 8 20
