@@ -8,21 +8,16 @@ public class _19564 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String input = br.readLine();
+        String s = br.readLine();
+        int k = 1;
 
-        char cur = input.charAt(0);
-        int count = 1;
-
-        for (int i = 1; i < input.length(); i++) {
-            // 아스키코드 값이 감소하는 경우
-            if (cur - '0' >= input.charAt(i) - '0') {
-                count++;
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i - 1) >= s.charAt(i)) {
+                k++;
             }
-            // 현재 문자를 다음 문자로 갱신
-            cur = input.charAt(i);
         }
 
-        bw.write(String.valueOf(count));
+        bw.write(String.valueOf(k));
         bw.flush();
         bw.close();
     }
