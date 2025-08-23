@@ -1,34 +1,37 @@
 package greedy.silver.silver_5;
-import java.util.Scanner;
+
+import java.io.*;
+
 public class _1439 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        String s = sc.next();
-        char[] arr = s.toCharArray();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int zero = 0;
-        int one = 0;
+        String s = br.readLine();
 
-        if(arr[0] == '0'){
-            zero++;
+        int zeroGroupCount = 0;
+        int oneGroupCount = 0;
+
+        if (s.startsWith("0")) {
+            zeroGroupCount++;
+        } else {
+            oneGroupCount++;
         }
-        else {
-            one++;
-        }
 
-        for(int i = 1; i < arr.length; i++){
-            if(arr[i - 1] != arr[i]){
-                if(arr[i] == '0'){
-                    zero++;
-                }
-                else if(arr[i] == '1'){
-                    one++;
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i - 1) != s.charAt(i)) {
+                if (s.charAt(i) == '1') {
+                    oneGroupCount++;
+                } else {
+                    zeroGroupCount++;
                 }
             }
         }
-        sc.close();
 
-        System.out.println(Math.min(zero, one));
+        bw.write(String.valueOf(Math.min(zeroGroupCount, oneGroupCount)));
+        bw.flush();
+        bw.close();
     }
+
 }
