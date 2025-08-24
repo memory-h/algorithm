@@ -1,22 +1,27 @@
 package greedy.silver.silver_5;
-import java.util.Scanner;
+
+import java.io.*;
+
 public class _1789 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        long S = sc.nextLong();
-        long sum = 0;
-        long count = 0;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        for(int i = 1; ; i++){
-            sum += i;
-            count++;
-            if(sum > S){
-                break;
-            }
+        long s = Long.parseLong(br.readLine());
+        long sum = 0L;
+        long next = 1L;
+        long n = 0L;
+
+        while (sum + next <= s) {
+            sum += next;
+            next++;
+            n++;
         }
-        sc.close();
 
-        System.out.println(count - 1);
+        bw.write(String.valueOf(n));
+        bw.flush();
+        bw.close();
     }
+
 }
