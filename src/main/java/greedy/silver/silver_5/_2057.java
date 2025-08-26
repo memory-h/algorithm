@@ -3,35 +3,36 @@ package greedy.silver.silver_5;
 import java.io.*;
 
 public class _2057 {
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         long n = Long.parseLong(br.readLine());
 
-        boolean check = false;
+        if (n == 0)  {
+            bw.write("NO");
+            bw.flush();
+            bw.close();
+            return;
+        }
 
-        if (n != 0) {
-            for (int i = 20; i >= 0; i--) {
-                long factorial = 1L;
+        long[] factorials = new long[21];
+        factorials[0] = 1;
 
-                // factorial 구하기
-                for (int j = 1; j <= i; j++) factorial *= j;
+        for (int i = 1; i < factorials.length; i++) {
+            factorials[i] = factorials[i - 1] * i;
+        }
 
-                // n이 factorial 보다 작거나 같으면 빼준다.
-                if (n >= factorial) n -= factorial;
-
-                // 팩토리얼의 합으로 나타낼 수 있으면 check = true
-                if (n == 0) {
-                    check = true;
-                    break;
-                }
+        for (int i = 20; i >= 0; i--) {
+            if (n >= factorials[i]) {
+                n -= factorials[i];
             }
         }
-        if (check) bw.write("YES");
-        else bw.write("NO");
 
+        bw.write(n == 0 ? "YES" : "NO");
         bw.flush();
         bw.close();
     }
+
 }
