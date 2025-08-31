@@ -4,65 +4,59 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 public class _12033 {
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringBuilder sb = new StringBuilder();
         StringTokenizer st;
 
-        int testCase = Integer.parseInt(br.readLine());
-        int x = 1;
+        int testCases = Integer.parseInt(br.readLine());
 
-        while (testCase --> 0) {
+        for (int t = 1; t <= testCases; t++) {
             int n = Integer.parseInt(br.readLine());
 
-            int[] arr = new int[2 * n];
-            int[] result = new int[n];
-            boolean[] visited = new boolean[2 * n];
+            int[] prices = new int[2 * n];
+            int[] discountPrices = new int[n];
+            boolean[] used = new boolean[2 * n];
 
             st = new StringTokenizer(br.readLine());
-
-            for (int i = 0; i < 2 * n; i++) {
-                arr[i] = Integer.parseInt(st.nextToken());
+            for (int j = 0; j < 2 * n; j++) {
+                prices[j] = Integer.parseInt(st.nextToken());
             }
 
             int index = 0;
 
-            for (int i = 0; i < 2 * n; i++) {
-                if (index == n) {
-                    break;
-                }
-
+            for (int i = 0; i < 2 * n && index < n; i++) {
                 // 방문했거나, 정상 가격인 경우
-                if (visited[i] || arr[i] % 3 != 0) {
+                if (used[i] || prices[i] % 3 != 0) {
                     continue;
                 }
 
-                long price = (arr[i] / 3L) * 4; // 정상 가격
+                long originalPrice = (prices[i] / 3L) * 4;
 
                 for (int j = i + 1; j < 2 * n; j++) {
-                    if (!visited[j] && price == arr[j]) {
-                        visited[j] = true;
-                        result[index] = arr[i]; // 할인 가격 저장
+                    if (!used[j] && originalPrice == prices[j]) {
+                        used[j] = true;
+                        discountPrices[index] = prices[i];
                         index++;
-
                         break;
                     }
                 }
             }
 
-            sb.append("Case #").append(x).append(": ");
+            sb.append("Case #").append(t).append(": ");
 
-            for (int i : result) {
-                sb.append(i).append(" ");
+            for (int val : discountPrices) {
+                sb.append(val).append(" ");
             }
 
             sb.append("\n");
-            x++;
         }
 
         bw.write(sb.toString());
         bw.flush();
         bw.close();
     }
+
 }
