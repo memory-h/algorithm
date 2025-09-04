@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.StringTokenizer;
 
 public class _15720 {
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -15,45 +16,60 @@ public class _15720 {
         int c = Integer.parseInt(st.nextToken());
         int d = Integer.parseInt(st.nextToken());
 
-        int min = Math.min(b, Math.min(c, d));
-        int totalPrice = 0;
+        Integer[] burger = readIntArray(br.readLine(), b);
+        Integer[] sideMenu = readIntArray(br.readLine(), c);
+        Integer[] beverage = readIntArray(br.readLine(), d);
+
+        int totalPrice = sum(burger) + sum(sideMenu) + sum(beverage);
+
+        sortDesc(burger);
+        sortDesc(sideMenu);
+        sortDesc(beverage);
+
         int discountPrice = 0;
-        int price = 0;
+        int burgerSetCount = Math.min(b, Math.min(c, d));
 
-        Integer[] burger = new Integer[b];
-        Integer[] sideMenu = new Integer[c];
-        Integer[] beverage = new Integer[d];
-
-        st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < b; i++) {
-            burger[i] = Integer.parseInt(st.nextToken());
-            totalPrice += burger[i];
+        for (int i = 0; i < burgerSetCount; i++) {
+            int setSum = burger[i] + sideMenu[i] + beverage[i];
+            discountPrice += (setSum * 9) / 10;
         }
-        Arrays.sort(burger, Collections.reverseOrder());
 
-        st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < c; i++) {
-            sideMenu[i] = Integer.parseInt(st.nextToken());
-            totalPrice += sideMenu[i];
-        }
-        Arrays.sort(sideMenu, Collections.reverseOrder());
+        discountPrice += sumFrom(burger, burgerSetCount);
+        discountPrice += sumFrom(sideMenu, burgerSetCount);
+        discountPrice += sumFrom(beverage, burgerSetCount);
 
-        st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < d; i++) {
-            beverage[i] = Integer.parseInt(st.nextToken());
-            totalPrice += beverage[i];
-        }
-        Arrays.sort(beverage, Collections.reverseOrder());
-
-        for (int i = 0; i < min; i++)
-            discountPrice += (int) ((burger[i] + sideMenu[i] + beverage[i]) * 0.9);
-
-        for (int i = min; i < b; i++) price += burger[i];
-        for (int i = min; i < c; i++) price += sideMenu[i];
-        for (int i = min; i < d; i++) price += beverage[i];
-
-        bw.write(totalPrice + "\n" + (discountPrice + price));
+        bw.write(totalPrice + "\n" + discountPrice);
         bw.flush();
         bw.close();
     }
+
+    private static Integer[] readIntArray(String line, int n) {
+        Integer[] arr = new Integer[n];
+        StringTokenizer st = new StringTokenizer(line);
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        }
+        return arr;
+    }
+
+    private static void sortDesc(Integer[] arr) {
+        Arrays.sort(arr, Collections.reverseOrder());
+    }
+
+    private static int sum(Integer[] arr) {
+        int s = 0;
+        for (int v : arr) {
+            s += v;
+        }
+        return s;
+    }
+
+    private static int sumFrom(Integer[] arr, int from) {
+        int s = 0;
+        for (int i = from; i < arr.length; i++) {
+            s += arr[i];
+        }
+        return s;
+    }
+
 }
