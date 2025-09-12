@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class _28464 {
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -12,28 +13,29 @@ public class _28464 {
 
         int n = Integer.parseInt(br.readLine());
 
-        int[] arr = new int[n];
+        int[] frenchFries = new int[n];
 
         st = new StringTokenizer(br.readLine());
-
         for (int i = 0; i < n; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());
+            frenchFries[i] = Integer.parseInt(st.nextToken());
         }
 
-        Arrays.sort(arr);
+        Arrays.sort(frenchFries);
 
-        int s = 0, p = 0;
-
-        for (int i = n - 1; i >= n / 2; i--) {
-            p += arr[i];
-        }
+        int yang = 0;
+        int park = 0;
 
         for (int i = 0; i < n / 2; i++) {
-            s += arr[i];
+            yang += frenchFries[i];
         }
 
-        bw.write(s + " " + p);
+        for (int i = n / 2; i < n; i++) {
+            park += frenchFries[i];
+        }
+
+        bw.write(yang + " " + park);
         bw.flush();
         bw.close();
     }
+
 }
