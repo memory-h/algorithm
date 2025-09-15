@@ -1,55 +1,63 @@
 package dfs.silver.silver_3;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Stack;
-import java.util.StringTokenizer;
+
+import java.io.*;
+import java.util.*;
+
 public class _2606 {
-    static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
-    static Stack<Integer> stack = new Stack<>();
 
-    static int N, M, cnt = 1, count = -1;
-    static int[] visited;
+    private static int n;
+    private static int[][] arr;
+    private static boolean[] visited;
 
-    public static void dfs(int startNode) {
-        stack.push(startNode);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st;
 
-        while(!stack.isEmpty()) {
-            int node = stack.pop();
+        n = Integer.parseInt(br.readLine());
 
-            if(visited[node] == 0) {
-                visited[node] = cnt++;
-                count++;
-                stack.addAll(graph.get(node));
+        arr = new int[n + 1][n + 1];
+        visited = new boolean[n + 1];
+
+        int computerCount = Integer.parseInt(br.readLine());
+
+        for (int i = 0; i < computerCount; i++) {
+            st = new StringTokenizer(br.readLine());
+
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
+
+            arr[x][y] = 1;
+            arr[y][x] = 1;
+        }
+
+        int result = bfs();
+
+        bw.write(String.valueOf(result));
+        bw.flush();
+        bw.close();
+    }
+
+    private static int bfs() {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(1);
+        visited[1] = true;
+
+        int count = 0;
+
+        while (!queue.isEmpty()) {
+            int currentNode = queue.poll();
+
+            for (int next = 1; next <= n; next++) {
+                if (!visited[next] && arr[currentNode][next] == 1) {
+                    visited[next] = true;
+                    count++;
+                    queue.add(next);
+                }
             }
         }
+
+        return count;
     }
-    public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        N = Integer.parseInt(br.readLine());
-        M = Integer.parseInt(br.readLine());
-
-        visited = new int[N + 1];
-
-        for(int i = 0; i <= N; i++) {
-            graph.add(new ArrayList<>());
-        }
-        for(int i = 0; i < M; i++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-
-            graph.get(a).add(b);
-            graph.get(b).add(a);
-        }
-        for(int i = 0; i <= N; i++) {
-            Collections.sort(graph.get(i), Collections.reverseOrder());
-        }
-        dfs(1);
-
-        System.out.println(count);
-    }
 }
