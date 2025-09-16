@@ -7,55 +7,49 @@ import java.util.StringTokenizer;
 
 public class _25418 {
 
-    static int a, k, result;
-    static boolean[] visited;
+    private static boolean[] visited;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        a = Integer.parseInt(st.nextToken());
-        k = Integer.parseInt(st.nextToken());
+        int a = Integer.parseInt(st.nextToken());
+        int k = Integer.parseInt(st.nextToken());
 
-        visited = new boolean[1000001];
+        visited = new boolean[k + 1];
 
-        bfs();
+        int count = bfs(a, k);
 
-        bw.write(String.valueOf(result));
+        bw.write(String.valueOf(count));
         bw.flush();
         bw.close();
     }
 
-    private static void bfs() {
-
+    private static int bfs(int a, int k) {
         Queue<int[]> queue = new LinkedList<>();
         queue.add(new int[]{a, 0});
         visited[a] = true;
 
         while (!queue.isEmpty()) {
-            int[] now = queue.poll();
+            int[] cur = queue.poll();
 
-            // a가 k와 같아지는 경우
-            if (now[0] == k) {
-                result = now[1];
-
-                return;
+            if (cur[0] == k) {
+                return cur[1];
             }
 
-            // 연산 2: 정수 a에 2를 곱한다.
-            if (now[0] * 2 <= k && !visited[now[0] * 2]) {
-                visited[now[0] * 2] = true;
-                queue.add(new int[]{now[0] * 2, now[1] + 1});
+            if (cur[0] + 1 <= k && !visited[cur[0] + 1]) {
+                visited[cur[0] + 1] = true;
+                queue.add(new int[]{cur[0] + 1, cur[1] + 1});
             }
 
-            // 연산 1: 정수 a에 1을 더한다.
-            if (now[0] + 1 <= k && !visited[now[0] + 1]) {
-                visited[now[0] + 1] = true;
-                queue.add(new int[]{now[0] + 1, now[1] + 1});
+            if (cur[0] * 2 <= k && !visited[cur[0] * 2]) {
+                visited[cur[0] * 2] = true;
+                queue.add(new int[]{cur[0] * 2, cur[1] + 1});
             }
         }
 
+        return 0;
     }
 
 }
