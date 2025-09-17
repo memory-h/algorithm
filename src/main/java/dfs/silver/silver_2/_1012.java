@@ -1,66 +1,78 @@
 package dfs.silver.silver_2;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
+import java.io.*;
 import java.util.StringTokenizer;
+
 public class _1012 {
-    static int N, M, K;
-    static int[][] graph;
-    static boolean[][] visited;
 
-    static int[] dx = {0, -1, 0, 1}; 	// 상하좌우
-    static int[] dy = {1, 0, -1, 0};	// 상하좌우
+    private static int n;
+    private static int m;
 
-    public static void dfs(int x, int y) {
-        visited[x][y] = true; // 방문 체크
-        // 4방면 탐색
-        for(int i = 0; i < 4; i++) {
-            int x1 = x + dx[i];
-            int y1 = y + dy[i];
-            // 배추가 있고, 탐색하지 않았으면 dfs탐색
-            if(x1 >= 0 && y1 >= 0 && x1 < N && y1 < M) {
-                if(graph[x][y] == 1 && !visited[x1][y1]) {
-                    dfs(x1, y1);
-                }
-            }
-        }
-    }
-    public static void main(String[] args) throws IOException{
+    private static int[][] graph;
+    private static boolean[][] visited;
+
+    private static int[] dx = {-1, 1, 0, 0};
+    private static int[] dy = {0, 0, -1, 1};
+
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder();
         StringTokenizer st;
 
-        int T = Integer.parseInt(br.readLine());
+        int testCases = Integer.parseInt(br.readLine());
 
-        for(int i = 0; i < T; i++) {
+        while (testCases-- > 0) {
             st = new StringTokenizer(br.readLine());
 
-            N = Integer.parseInt(st.nextToken());	// 가로 길이
-            M = Integer.parseInt(st.nextToken());	// 세로 길이
-            K = Integer.parseInt(st.nextToken());	// 배추 개수
+            m = Integer.parseInt(st.nextToken());
+            n = Integer.parseInt(st.nextToken());
+            int k = Integer.parseInt(st.nextToken());
 
-            visited = new boolean[N][M];
-            graph = new int[N][M];
+            graph = new int[m][n];
+            visited = new boolean[m][n];
 
-            for(int j = 0; j < K; j++) {
+            for (int i = 0; i < k; i++) {
                 st = new StringTokenizer(br.readLine());
 
-                int a = Integer.parseInt(st.nextToken());
-                int b = Integer.parseInt(st.nextToken());
+                int x = Integer.parseInt(st.nextToken());
+                int y = Integer.parseInt(st.nextToken());
 
-                graph[a][b] = 1;
+                graph[x][y] = 1;
             }
-            int cnt = 0;
-            // 배추가 있으면 dfs탐색 시작하고, 구역 수 증가
-            for(int x = 0; x < N; x++) {
-                for(int y = 0; y < M; y++) {
-                    // 배추가 있고 방문하지 않았으면 dfs탐색하고 구역 수 1증가.
-                    if(graph[x][y] == 1 && !visited[x][y]) {
-                        dfs(x, y);
-                        cnt++;
+
+            int count = 0;
+
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (!visited[i][j] && graph[i][j] == 1) {
+                        dfs(i, j);
+                        count++;
                     }
                 }
             }
-            System.out.println(cnt);
+            sb.append(count).append("\n");
+        }
+
+        bw.write(sb.toString());
+        bw.flush();
+        bw.close();
+    }
+
+    private static void dfs(int x, int y) {
+        for (int i = 0; i < 4; i++) {
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+
+            if (nx < 0 || ny < 0 || nx >= m || ny >= n) {
+                continue;
+            }
+
+            if (!visited[nx][ny] && graph[nx][ny] == 1) {
+                visited[nx][ny] = true;
+                dfs(nx, ny);
+            }
         }
     }
+
 }
