@@ -5,31 +5,14 @@ import java.util.StringTokenizer;
 
 public class _11123 {
 
-    static int h, w;
-    static char[][] graph;
-    static boolean[][] visited;
-    static int[] dx = {1, 0, -1, 0};
-    static int[] dy = {0, 1, 0, -1};
+    private static int h;
+    private static int w;
 
-    public static void dfs(int x, int y) {
+    private static char[][] graph;
+    private static boolean[][] visited;
 
-        for (int i = 0; i < 4; i++) {
-            int x1 = dx[i] + x;
-            int y1 = dy[i] + y;
-
-            // 그리드의 범위를 벗어났을 때
-            if (x1 < 0 || y1 < 0 || x1 >= h || y1 >= w) {
-                continue;
-            }
-
-            // # 이면서 방문하지 않았을 때
-            if (graph[x1][y1] == '#' && !visited[x1][y1]) {
-                visited[x1][y1] = true;
-                dfs(x1, y1);
-            }
-        }
-
-    }
+    private static int[] dx = {-1, 1, 0, 0};
+    private static int[] dy = {0, 0, -1, 1};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -37,9 +20,9 @@ public class _11123 {
         StringBuilder sb = new StringBuilder();
         StringTokenizer st;
 
-        int testCase = Integer.parseInt(br.readLine());
+        int testCases = Integer.parseInt(br.readLine());
 
-        while (testCase --> 0) {
+        while (testCases-- > 0) {
             st = new StringTokenizer(br.readLine());
 
             h = Integer.parseInt(st.nextToken());
@@ -49,23 +32,21 @@ public class _11123 {
             visited = new boolean[h][w];
 
             for (int i = 0; i < h; i++) {
-                String input = br.readLine();
+                String str = br.readLine();
 
                 for (int j = 0; j < w; j++) {
-                    graph[i][j] = input.charAt(j);
+                    graph[i][j] = str.charAt(j);
                 }
             }
+
             int count = 0;
 
             for (int i = 0; i < h; i++) {
                 for (int j = 0; j < w; j++) {
-
-                    // # 이면서 방문하지 않았을 때, dfs 탐색
-                    if (graph[i][j] == '#' && !visited[i][j]) {
+                    if (!visited[i][j] && graph[i][j] == '#') {
                         dfs(i, j);
                         count++;
                     }
-
                 }
             }
 
@@ -76,4 +57,21 @@ public class _11123 {
         bw.flush();
         bw.close();
     }
+
+    private static void dfs(int x, int y) {
+        for (int i = 0; i < 4; i++) {
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+
+            if (nx < 0 || ny < 0 || nx >= h || ny >= w) {
+                continue;
+            }
+
+            if (!visited[nx][ny] && graph[nx][ny] == '#') {
+                visited[nx][ny] = true;
+                dfs(nx, ny);
+            }
+        }
+    }
+
 }
