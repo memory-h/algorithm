@@ -1,55 +1,78 @@
 package dfs.silver.silver_2;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+
+import java.io.*;
+//import java.util.Stack;
 import java.util.StringTokenizer;
+
 public class _11724 {
-    static int N, M, cnt = 0;
-    static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
-    static boolean[] visited;
 
-    public static void dfs(int startNode) {
-        if(visited[startNode]) {
-            return;
-        }
-        else {
-            visited[startNode] = true;
+    private static int n;
+    private static int m;
 
-            for(int node : graph.get(startNode)) {
-                if(!visited[node]) {
-                    dfs(node);
-                }
-            }
-        }
-    }
-    public static void main(String[] args) throws IOException{
+    private static int[][] graph;
+    private static boolean[] visited;
+
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
 
-        visited = new boolean[N + 1];
+        graph = new int[n + 1][n + 1];
+        visited = new boolean[n + 1];
 
-        for(int i = 0; i <= N; i++) {
-            graph.add(new ArrayList<>());
-        }
-        for(int i = 0; i < M; i++) {
+        for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
 
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
 
-            graph.get(a).add(b);
-            graph.get(b).add(a);
+            graph[x][y] = 1;
+            graph[y][x] = 1;
         }
-        for(int i = 1; i <= N; i++) {
-            if(!visited[i]) {
+
+        int count = 0;
+
+        for (int i = 1; i <= n; i++) {
+            if (!visited[i]) {
                 dfs(i);
-                cnt++;
+                count++;
             }
         }
-        System.out.println(cnt);
+
+        bw.write(String.valueOf(count));
+        bw.flush();
+        bw.close();
     }
+
+    private static void dfs(int node) {
+        visited[node] = true;
+
+        for (int i = 1; i <= n; i++) {
+            if (!visited[i] && graph[node][i] == 1) {
+                visited[i] = true;
+                dfs(i);
+            }
+        }
+    }
+
+//    private static void dfs(int startNode) {
+//        Stack<Integer> stack = new Stack<>();
+//        stack.push(startNode);
+//        visited[startNode] = true;
+//
+//        while (!stack.isEmpty()) {
+//            int cur = stack.pop();
+//
+//            for (int i = 1; i <= n; i++) {
+//                if (!visited[i] && graph[cur][i] == 1) {
+//                    visited[i] = true;
+//                    stack.push(i);
+//                }
+//            }
+//        }
+//    }
+
 }
