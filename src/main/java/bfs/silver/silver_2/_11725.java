@@ -1,60 +1,67 @@
 package bfs.silver.silver_2;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+
+import java.io.*;
+import java.util.*;
+
 public class _11725 {
-    static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
-    static Queue<Integer> q = new LinkedList<>();
 
-    static int N;
-    static boolean[] visited;
-    static int[] parentsNode;
+    private static List<Integer>[] graph;
+    private static int[] parentNode;
+    private static boolean[] visited;
 
-    public static void bfs(int startNode) {
-        startNode = 1;	// 트리 루트를 1이라고 문제에서 주어짐
-        q.offer(startNode);
-        visited[startNode] = true;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
 
-        while(!q.isEmpty()) {
-            int n = q.poll();
-            for(int node : graph.get(n)) {
-                if(!visited[node]) {
-                    visited[node] = true;
-                    q.offer(node);
-                    parentsNode[node] = n;	// 방문하지 않았으면 부모 노드 추가
+        int n = Integer.parseInt(st.nextToken());
+
+        graph = new ArrayList[n + 1];
+        parentNode = new int[n + 1];
+        visited = new boolean[n + 1];
+
+        for (int i = 1; i <= n; i++) {
+            graph[i] = new ArrayList<>();
+        }
+
+        for (int i = 0; i < n - 1; i++) {
+            st = new StringTokenizer(br.readLine());
+
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
+
+            graph[x].add(y);
+            graph[y].add(x);
+        }
+
+        bfs(1);
+
+        for (int i = 2; i <= n; i++) {
+            sb.append(parentNode[i]).append("\n");
+        }
+
+        bw.write(sb.toString());
+        bw.flush();
+        bw.close();
+    }
+
+    private static void bfs(int node) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(node);
+        visited[node] = true;
+
+        while (!queue.isEmpty()) {
+            int cur = queue.poll();
+
+            for (int next : graph[cur]) {
+                if (!visited[next]) {
+                    visited[next] = true;
+                    parentNode[next] = cur;
+                    queue.add(next);
                 }
             }
         }
     }
-    public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
 
-        N = Integer.parseInt(br.readLine());
-
-        visited = new boolean[N + 1];
-        parentsNode = new int[N + 1];
-
-        for(int i = 0; i <= N; i++) {
-            graph.add(new ArrayList<>());
-        }
-        for(int i = 0; i < N - 1; i++) {
-            st = new StringTokenizer(br.readLine());
-
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-
-            graph.get(a).add(b);
-            graph.get(b).add(a);
-        }
-        bfs(N);
-
-        for(int i = 2; i < graph.size(); i++) {	// 배열의 사이즈만큼 부모 노드 출력
-            System.out.println(parentsNode[i]);
-        }
-    }
 }
