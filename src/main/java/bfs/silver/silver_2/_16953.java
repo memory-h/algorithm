@@ -1,43 +1,46 @@
 package bfs.silver.silver_2;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+
+import java.io.*;
+import java.util.*;
+
 public class _16953 {
-    static int cnt = 1;
-    public static int bfs(long A, long B){
-        Queue<Long> q = new LinkedList<>();
-        q.offer(A);
 
-        while(!q.isEmpty()){
-            int size = q.size();
-
-            for(int i = 0; i < size; i++){
-                long tmp = q.poll();
-
-                if(tmp == B){
-                    return cnt;
-                }
-                if(tmp * 2 <= B){
-                    q.offer(tmp * 2);
-                }
-                if(tmp * 10 + 1 <= B){
-                    q.offer(tmp * 10 + 1);
-                }
-            }
-            cnt++;
-        }
-        return -1;
-    }
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int A = Integer.parseInt(st.nextToken());
-        int B = Integer.parseInt(st.nextToken());
+        int a = Integer.parseInt(st.nextToken());
+        int b = Integer.parseInt(st.nextToken());
 
-        System.out.println(bfs(A, B));
+        bw.write(String.valueOf(bfs(a, b)));
+        bw.flush();
+        bw.close();
     }
+
+    private static int bfs(int startValue, int endValue) {
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[]{startValue, 0});
+
+        while (!queue.isEmpty()) {
+            int[] cur = queue.poll();
+            int firstOperation = cur[0] * 2;
+            long secondOperation = cur[0] * 10L + 1L;
+
+            if (cur[0] == endValue) {
+                return cur[1] + 1;
+            }
+
+            if (firstOperation <= endValue) {
+                queue.offer(new int[]{firstOperation, cur[1] + 1});
+            }
+
+            if (secondOperation <= endValue) {
+                queue.offer(new int[]{(int) secondOperation, cur[1] + 1});
+            }
+        }
+
+        return -1;
+    }
+
 }
