@@ -1,79 +1,73 @@
 package bfs.silver.silver_2;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class _18126 {
 
-    static int n;
-    static long max;
-    static ArrayList<ArrayList<Node>> graph;
-    static boolean[] visited;
-
-    private static void bfs() {
-
-        Queue<Node> queue = new LinkedList<>();
-        queue.offer(new Node(1, 0));
-        visited[1] = true;
-
-        // BFS 탐색
-        while (!queue.isEmpty()) {
-            Node now = queue.poll();
-
-            for (Node node : graph.get(now.room)) {
-                if (!visited[node.room]) {
-                    visited[node.room] = true;
-                    queue.offer(new Node(node.room, now.value + node.value));
-                    max = Math.max(max, now.value + node.value);
-                }
-            }
-        }
-
-    }
+    private static List<List<RoomDistance>> graph;
+    private static boolean[] visited;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringTokenizer st = new StringTokenizer(br.readLine());
+        StringTokenizer st;
 
-        n = Integer.parseInt(st.nextToken());
+        int n = Integer.parseInt(br.readLine());
 
         graph = new ArrayList<>();
-        for (int i = 0; i <= n; i++) graph.add(new ArrayList<>());
-
         visited = new boolean[n + 1];
 
-        // 양방향으로 연결하는 길의 길이 저장
-        for (int i = 0; i < n -1; i++) {
+        for (int i = 0; i <= n; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        for (int i = 0; i < n - 1; i++) {
             st = new StringTokenizer(br.readLine());
 
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
-            int c = Integer.parseInt(st.nextToken());
+            long c = Integer.parseInt(st.nextToken());
 
-            graph.get(a).add(new Node(b, c));
-            graph.get(b).add(new Node(a, c));
+            graph.get(a).add(new RoomDistance(b, c));
+            graph.get(b).add(new RoomDistance(a, c));
         }
 
-        max = 0L;
-        bfs();
-
-        bw.write(String.valueOf(max));
+        bw.write(String.valueOf(bfs()));
         bw.flush();
         bw.close();
     }
 
-    static class Node {
+    private static long bfs() {
+        Queue<RoomDistance> queue = new LinkedList<>();
+        queue.offer(new RoomDistance(1, 0L));
+        visited[1] = true;
 
-        private int room;
-        private long value;
+        long max = 0L;
 
-        public Node(int room, long value) {
+        while (!queue.isEmpty()) {
+            RoomDistance roomDistance = queue.poll();
+            max = Math.max(max, roomDistance.distance);
+
+            for (RoomDistance next : graph.get(roomDistance.room)) {
+                if (!visited[next.room]) {
+                    visited[next.room] = true;
+                    queue.offer(new RoomDistance(next.room, roomDistance.distance + next.distance));
+                }
+            }
+        }
+
+        return max;
+    }
+
+    private static class RoomDistance {
+
+        private final int room;
+        private final long distance;
+
+        public RoomDistance(int room, long distance) {
             this.room = room;
-            this.value = value;
+            this.distance = distance;
         }
 
     }
