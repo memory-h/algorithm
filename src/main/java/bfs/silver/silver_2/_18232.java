@@ -1,18 +1,14 @@
 package bfs.silver.silver_2;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class _18232 {
 
-    static int n, m, s, e, result;
-    static ArrayList<ArrayList<Integer>> graph;
-    static boolean[] visited;
+    private static int n;
 
-    static int[] dx = {1, -1};
+    private static List<List<Integer>> graph;
+    private static boolean[] visited;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -20,12 +16,12 @@ public class _18232 {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         n = Integer.parseInt(st.nextToken());
-        m = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
 
         st = new StringTokenizer(br.readLine());
 
-        s = Integer.parseInt(st.nextToken());
-        e = Integer.parseInt(st.nextToken());
+        int s = Integer.parseInt(st.nextToken());
+        int e = Integer.parseInt(st.nextToken());
 
         graph = new ArrayList<>();
         visited = new boolean[n + 1];
@@ -40,66 +36,48 @@ public class _18232 {
             int x = Integer.parseInt(st.nextToken());
             int y = Integer.parseInt(st.nextToken());
 
-            // 텔레포트 양방향 설정
             graph.get(x).add(y);
             graph.get(y).add(x);
         }
 
-        bfs(s);
+        int result = bfs(s, e);
 
         bw.write(String.valueOf(result));
         bw.flush();
         bw.close();
     }
 
-    private static void bfs(int x) {
-
-        Queue<Position> queue = new LinkedList<>();
-        queue.add(new Position(x, 0));
-        visited[x] = true;
+    private static int bfs(int startNode, int endNode) {
+        Queue<int[]> queue = new LinkedList<>();
+        queue.add(new int[]{startNode, 0});
+        visited[startNode] = true;
 
         while (!queue.isEmpty()) {
-            Position position = queue.poll();
+            int[] node = queue.poll();
 
-            if (position.x == e) {
-                result = position.count;
-
-                return;
+            if (node[0] == endNode) {
+                return node[1];
             }
 
-            // position.x에 위치한 텔레포트와 연결된 지점으로 이동
-            for (int value : graph.get(position.x)) {
-                if (!visited[value]) {
-                    visited[value] = true;
-                    queue.add(new Position(value, position.count + 1));
+            for (int next : graph.get(node[0])) {
+                if (!visited[next]) {
+                    visited[next] = true;
+                    queue.add(new int[]{next, node[1] + 1});
                 }
             }
 
-            // (position.x + 1) 또는 (position.x - 1) 이동
-            for (int i = 0; i < 2; i++) {
-                int nx = dx[i] + position.x;
+            if (node[0] - 1 > 0 && !visited[node[0] - 1]) {
+                visited[node[0] - 1] = true;
+                queue.add(new int[]{node[0] - 1, node[1] + 1});
+            }
 
-                if (nx < 0 || nx > n) {
-                    continue;
-                }
-
-                if (!visited[nx]) {
-                    visited[nx] = true;
-                    queue.add(new Position(nx, position.count + 1));
-                }
+            if (node[0] + 1 <= n && !visited[node[0] + 1]) {
+                visited[node[0] + 1] = true;
+                queue.add(new int[]{node[0] + 1, node[1] + 1});
             }
         }
 
-    }
-
-    static class Position {
-        private final int x;
-        private final int count;
-
-        public Position(int x, int count) {
-            this.x = x;
-            this.count = count;
-        }
+        return 0;
     }
 
 }
