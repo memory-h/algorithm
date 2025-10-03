@@ -21,7 +21,6 @@ public class _21736 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        StringBuilder sb = new StringBuilder();
 
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
