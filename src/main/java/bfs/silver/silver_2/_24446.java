@@ -1,70 +1,72 @@
 package bfs.silver.silver_2;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+
+import java.io.*;
+import java.util.*;
+
 public class _24446 {
-    static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
-    static Queue<Integer> q = new LinkedList<>();
 
-    static int N, M, R, cnt = 0;
-    static boolean[] visited;
-    static int[] check;
+    private static List<List<Integer>> graph;
+    private static boolean[] visited;
+    private static int[] nodeSequence;
 
-    public static void bfs(int startNode) {
-        visited = new boolean[N + 1];
-        check = new int[N + 1];
-
-        q.offer(startNode);
-        visited[startNode] = true;
-
-        for(int i = 1; i <= N; i++) {
-            check[i] = -1;
-        }
-        while(!q.isEmpty()) {
-            int size = q.size();
-
-            while(size --> 0) {
-                int n = q.poll();
-                check[n] = cnt;
-
-                for(int node : graph.get(n)) {
-                    if(!visited[node]) {
-                        visited[node] = true;
-                        q.offer(node);
-                    }
-                }
-            }
-            cnt++;
-        }
-    }
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
 
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
-        R = Integer.parseInt(st.nextToken());
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+        int r = Integer.parseInt(st.nextToken());
 
-        for(int i = 0; i <= N; i++) {
+        graph = new ArrayList<>();
+        visited = new boolean[n + 1];
+        nodeSequence = new int[n + 1];
+
+        Arrays.fill(nodeSequence, -1);
+
+        for (int i = 0; i <= n; i++) {
             graph.add(new ArrayList<>());
         }
-        for(int i = 0; i < M; i++) {
+
+        for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
 
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
 
-            graph.get(a).add(b);
-            graph.get(b).add(a);
+            graph.get(x).add(y);
+            graph.get(y).add(x);
         }
-        bfs(R);
 
-        for(int i = 1; i <= N; i++) {
-            System.out.println(check[i]);
+        bfs(r);
+
+        for (int i = 1; i <= n; i++) {
+            sb.append(nodeSequence[i]).append("\n");
+        }
+
+        bw.write(sb.toString());
+        bw.flush();
+        bw.close();
+    }
+
+    private static void bfs(int startNode) {
+        Queue<int[]> queue = new LinkedList<>();
+        queue.add(new int[]{startNode, 0});
+        visited[startNode] = true;
+        nodeSequence[startNode] = 0;
+
+        while (!queue.isEmpty()) {
+            int[] curNode = queue.poll();
+
+            for (int nextNode : graph.get(curNode[0])) {
+                if (!visited[nextNode]) {
+                    visited[nextNode] = true;
+                    nodeSequence[nextNode] = curNode[1] + 1;
+                    queue.add(new int[]{nextNode, curNode[1] + 1});
+                }
+            }
         }
     }
+
 }
