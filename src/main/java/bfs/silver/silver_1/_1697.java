@@ -1,65 +1,76 @@
 package bfs.silver.silver_1;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+
+import java.io.*;
+import java.util.*;
+
 public class _1697 {
-    static Queue<Integer> q = new LinkedList<Integer>();
 
-    static int[] graph;
-    static boolean[] visited;
-    static int N, K;
+    private static boolean[] visited;
 
-    public static void bfs(int startNode) { // startNode = N
-        q.offer(startNode);
-        graph[startNode] = 1;
+    private static int[] dx = {-1, 1, 2};
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new  StringTokenizer(br.readLine());
+
+        int n = Integer.parseInt(st.nextToken());
+        int k = Integer.parseInt(st.nextToken());
+
+        visited = new boolean[200001];
+
+        int result = bfs(n, k);
+
+        bw.write(String.valueOf(result));
+        bw.flush();
+        bw.close();
+    }
+
+    private static int bfs(int startNode, int endNode) {
+        Queue<Position> queue = new LinkedList<>();
+        queue.offer(new Position(startNode, 0));
         visited[startNode] = true;
 
-        while(!q.isEmpty()) {
-            int node = q.poll();
+        while (!queue.isEmpty()) {
+            Position position = queue.poll();
 
-            for(int i = 0; i < 3; i++) {
-                int find = 0;
+            if (position.curNode == endNode) {
+                return position.time;
+            }
 
-                if(i == 0) {
-                    find = node + 1;
-                }
-                else if(i == 1) {
-                    find = node - 1;
-                }
-                else {
-                    find = 2 * node;
+            for (int i = 0; i < dx.length; i++) {
+                int nextNode;
+
+                if (i == dx.length - 1) {
+                    nextNode = position.curNode * dx[dx.length - 1];
+                } else {
+                    nextNode = position.curNode + dx[i];
                 }
 
-                if(find >= 0 && find < 100001 && !visited[find]) {
-                    q.offer(find);
-                    visited[find] = true;
-                    graph[find] = graph[node] + 1;
+                if (nextNode < 0 || nextNode > 200000) {
+                    continue;
                 }
-                if(find == K) {
-                    System.out.println(graph[node]);
-                    return;
+
+                if (!visited[nextNode]) {
+                    visited[nextNode] = true;
+                    queue.offer(new Position(nextNode, position.time + 1));
                 }
             }
         }
+
+        return 0;
     }
-    public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        N = Integer.parseInt(st.nextToken());
-        K = Integer.parseInt(st.nextToken());
+    private static class Position {
 
-        graph = new int[100001];
-        visited = new boolean[100001];
+        private final int curNode;
+        private final int time;
 
-        if(N == K) {
-            System.out.println(0);
+        public Position(int curNode, int time) {
+            this.curNode = curNode;
+            this.time = time;
         }
-        else {
-            bfs(N);
-        }
+
     }
+
 }
