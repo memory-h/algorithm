@@ -1,62 +1,85 @@
 package bfs.silver.silver_1;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+
+import java.io.*;
+import java.util.*;
+
 public class _2178 {
-    static Queue<int[]> q = new LinkedList<int[]>();
 
-    static int[][] graph;
-    static boolean[][] visited;
-    static int N, M;
+    private static int n, m;
+    private static int[][] graph;
+    private static boolean[][] visited;
 
-    static int[] dx = {1, 0, 0, -1};
-    static int[] dy = {0, 1, -1, 0};
+    private static int[] dx = {-1, 1, 0, 0};
+    private static int[] dy = {0, 0, -1, 1};
 
-    public static void bfs(int x, int y) {
-        q.offer(new int[] {x, y});	// (x, y)쌍의 int형 배열을 저장
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new  StringTokenizer(br.readLine());
+
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
+
+        graph = new int[n][m];
+        visited = new boolean[n][m];
+
+        for (int i = 0; i < n; i++) {
+            String input = br.readLine();
+
+            for (int j = 0; j < m; j++) {
+                graph[i][j] = input.charAt(j) - '0';
+            }
+        }
+
+        int result = bfs(0, 0);
+
+        bw.write(String.valueOf(result));
+        bw.flush();
+        bw.close();
+    }
+
+    private static int bfs(int x, int y) {
+        Queue<Position> queue = new LinkedList<>();
+        queue.offer(new Position(x, y, 1));
         visited[x][y] = true;
 
-        while(!q.isEmpty()) {
-            int[] xy = q.poll();
+        while (!queue.isEmpty()) {
+            Position position = queue.poll();
 
-            for(int i = 0; i < 4; i++) {
-                int cx = xy[0] + dx[i];
-                int cy = xy[1] + dy[i];
+            if (position.x == n - 1 && position.y == m - 1) {
+                return position.depth;
+            }
 
-                if(cx >= 0 && cy >= 0 && cx < M && cy < N) {
-                    if(graph[cx][cy] == 1 && !visited[cx][cy]) {
-                        q.offer(new int[] {cx, cy});
-                        // 다음 탐색 지점을 Queue에 추가
-                        graph[cx][cy] = graph[xy[0]][xy[1]] + 1;
-                        // 다음 탐색 지점의 비용을 현재 좌표 +1 로 변경
-                        visited[cx][cy] = true;
-                        // 다음 탐색 지점 탐색거리 방문 체크
-                    }
+            for (int i = 0; i < 4; i++) {
+                int nx = position.x + dx[i];
+                int ny = position.y + dy[i];
+
+                if (nx < 0 || ny < 0 || nx >= n || ny >= m) {
+                    continue;
+                }
+
+                if (!visited[nx][ny] && graph[nx][ny] == 1) {
+                    visited[nx][ny] = true;
+                    queue.offer(new Position(nx, ny, position.depth + 1));
                 }
             }
         }
+
+        return 0;
     }
-    public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        N = Integer.parseInt(st.nextToken());	// 가로
-        M = Integer.parseInt(st.nextToken());	// 세로
+    private static class Position {
 
-        graph = new int[M][N];
-        visited = new boolean[M][N];
+        private final int x;
+        private final int y;
+        private final int depth;
 
-        for(int i = 0; i < N; i++) {
-            String s = br.readLine();
-            for(int j = 0; j < s.length(); j++) {
-                graph[j][i] = s.charAt(j) - '0';
-            }
+        public Position(int x, int y, int depth) {
+            this.x = x;
+            this.y = y;
+            this.depth = depth;
         }
-        bfs(0, 0);
 
-        System.out.println(graph[M - 1][N - 1]);
     }
+
 }
