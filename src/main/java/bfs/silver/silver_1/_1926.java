@@ -1,52 +1,21 @@
 package bfs.silver.silver_1;
 
 import java.io.*;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class _1926 {
 
-    static int n, m, area;
-    static int[][] graph;
-    static boolean[][] visited;
-    static int[] dx = {1, 0, -1, 0};
-    static int[] dy = {0, 1, 0, -1};
+    private static int n, m;
+    private static int[][] graph;
+    private static boolean[][] visited;
 
-    private static void bfs(int x, int y) {
-
-        Queue<int[]> queue = new LinkedList<>();
-        queue.offer(new int[]{x, y});
-
-        // 방문 처리 및 그림의 넓이 증가
-        visited[x][y] = true;
-        area++;
-
-        while (!queue.isEmpty()) {
-            int[] now = queue.poll();
-
-            for (int i = 0; i < 4; i++) {
-                int nx = dx[i] + now[0];
-                int ny = dy[i] + now[1];
-
-                if (nx < 0 || ny < 0 || nx >= n || ny >= m) {
-                    continue;
-                }
-
-                if (graph[nx][ny] == 1 && !visited[nx][ny]) {
-                    visited[nx][ny] = true;
-                    area++;
-                    queue.offer(new int[]{nx, ny});
-                }
-            }
-        }
-
-    }
+    private static int[] dx = {-1, 1, 0, 0};
+    private static int[] dy = {0, 0, -1, 1};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringTokenizer st = new StringTokenizer(br.readLine());
+        StringTokenizer st = new  StringTokenizer(br.readLine());
 
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
@@ -62,23 +31,61 @@ public class _1926 {
             }
         }
 
-        int picture = 0, max = 0;
+        int maxPaintingArea = 0;
+        int paintingCount = 0;
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                area = 0;
-
-                // 그림이고 방문하지 않았을 때 bfs 탐색
-                if (graph[i][j] == 1 && !visited[i][j]) {
-                    bfs(i, j);
-                    picture++;
-                    max = Math.max(max, area);
+                if (!visited[i][j] && graph[i][j] == 1) {
+                    maxPaintingArea = Math.max(maxPaintingArea, bfs(i, j));
+                    paintingCount++;
                 }
             }
         }
 
-        bw.write(picture + "\n" + max);
+        bw.write(paintingCount + "\n" + maxPaintingArea);
         bw.flush();
         bw.close();
     }
+
+    private static int bfs(int x, int y) {
+        Queue<Position> queue = new LinkedList<>();
+        queue.offer(new Position(x, y));
+        visited[x][y] = true;
+        int count = 1;
+
+        while (!queue.isEmpty()) {
+            Position position = queue.poll();
+
+            for (int i = 0; i < 4; i++) {
+                int nx = position.x + dx[i];
+                int ny = position.y + dy[i];
+
+                if (nx < 0 || ny < 0 || nx >= n || ny >= m) {
+                    continue;
+                }
+
+                if (!visited[nx][ny] && graph[nx][ny] == 1) {
+                    visited[nx][ny] = true;
+                    count++;
+                    queue.offer(new Position(nx, ny));
+                }
+            }
+        }
+
+        return count;
+    }
+
+    private static class Position {
+
+        private final int x;
+        private final int y;
+
+        public Position(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+    }
+
 }
