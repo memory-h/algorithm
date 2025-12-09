@@ -7,37 +7,12 @@ import java.util.StringTokenizer;
 
 public class _2468 {
 
-    static int n, area, max;
-    static int[][] graph;
-    static boolean[][] visited;
-    static int[] dx = {1, 0, -1, 0};
-    static int[] dy = {0, 1, 0, -1};
+    private static int n;
+    private static int[][] graph;
+    private static boolean[][] visited;
 
-    private static void bfs(int x, int y) {
-
-        Queue<int[]> queue = new LinkedList<>();
-        queue.offer(new int[]{x, y});
-        visited[x][y] = true;
-
-        while (!queue.isEmpty()) {
-            int[] now = queue.poll();
-
-            for (int i = 0; i < 4; i++) {
-                int nx = dx[i] + now[0];
-                int ny = dy[i] + now[1];
-
-                if (nx < 0 || ny < 0 || nx >= n || ny >= n) {
-                    continue;
-                }
-
-                if (graph[nx][ny] > max && !visited[nx][ny]) {
-                    visited[nx][ny] = true;
-                    queue.offer(new int[]{nx, ny});
-                }
-            }
-        }
-
-    }
+    private static int[] dx = {-1, 1, 0, 0};
+    private static int[] dy = {0, 0, -1, 1};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -47,41 +22,73 @@ public class _2468 {
         n = Integer.parseInt(br.readLine());
 
         graph = new int[n][n];
-        max = 1;
+        int maxAreaValue = 0;
 
         for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
 
             for (int j = 0; j < n; j++) {
                 graph[i][j] = Integer.parseInt(st.nextToken());
-                max = Math.max(max, graph[i][j]);
+                maxAreaValue = Math.max(graph[i][j], maxAreaValue);
             }
         }
 
-        int result = 1;
-        int temp = max;
+        int maxSafetyArea = 0;
 
-        for (int k = 0; k < temp; k++) {
-            // visited 배열 초기화
+        for (int k = 0; k <= maxAreaValue; k++) {
             visited = new boolean[n][n];
-            area = 0;
+            int safetyAreaCount = 0;
 
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    // 해당 지점이 max보다 크고 방문하지 않았을 때 bfs 탐색
-                    if (graph[i][j] > max && !visited[i][j]) {
-                        bfs(i, j);
-                        area++;
+                    if (!visited[i][j] && graph[i][j] > k) {
+                        bfs(i, j, k);
+                        safetyAreaCount++;
                     }
                 }
             }
-            // 장마철에 물에 잠기지 않는 안전한 영역의 최대 개수를 구한다.
-            result = Math.max(result, area);
-            max--;
+            maxSafetyArea = Math.max(maxSafetyArea, safetyAreaCount);
         }
 
-        bw.write(String.valueOf(result));
+        bw.write(String.valueOf(maxSafetyArea));
         bw.flush();
         bw.close();
     }
+
+    private static void bfs(int x, int y, int notSafetyArea) {
+        Queue<Position> queue = new LinkedList<>();
+        queue.offer(new Position(x, y));
+        visited[x][y] = true;
+
+        while (!queue.isEmpty()) {
+            Position position = queue.poll();
+
+            for (int i = 0; i < 4; i++) {
+                int nx = position.x + dx[i];
+                int ny = position.y + dy[i];
+
+                if (nx < 0 || ny < 0 || nx >= n || ny >= n) {
+                    continue;
+                }
+
+                if (!visited[nx][ny] && graph[nx][ny] > notSafetyArea) {
+                    visited[nx][ny] = true;
+                    queue.offer(new Position(nx, ny));
+                }
+            }
+        }
+    }
+
+    private static class Position {
+
+        private final int x;
+        private final int y;
+
+        public Position(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+    }
+
 }
