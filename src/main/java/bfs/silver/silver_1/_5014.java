@@ -1,51 +1,14 @@
 package bfs.silver.silver_1;
 
 import java.io.*;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class _5014 {
 
-    static int f, s, g, count;
-    static int[] cache;
-    static int[] move;
-    static boolean[] visited;
+    private static int f, s, g;
 
-    private static int bfs(int start) {
-
-        Queue<Integer> queue = new LinkedList<>();
-        queue.offer(start);
-        visited[start] = true;
-        count = 0;
-        
-        while (!queue.isEmpty()) {
-            int value = queue.poll();
-
-            // 스타트링크가 있는 곳에 도착하면 누른 버튼 수 return
-            if (value == g) {
-                return cache[value];
-            }
-
-            for (int i = 0; i < move.length; i++) {
-                int nm = move[i] + value;
-
-                if (nm < 1 || nm > f) {
-                    continue;
-                }
-
-                if (!visited[nm]) {
-                    visited[nm] = true;
-
-                    // 누른 버튼 수를 저장
-                    cache[nm] = cache[value] + 1;
-                    queue.offer(nm);
-                }
-            }
-        }
-
-        return -1;
-    }
+    private static int[] dx;
+    private static boolean[] visited;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -55,22 +18,58 @@ public class _5014 {
         f = Integer.parseInt(st.nextToken());
         s = Integer.parseInt(st.nextToken());
         g = Integer.parseInt(st.nextToken());
+        int u = Integer.parseInt(st.nextToken());
+        int d = -Integer.parseInt(st.nextToken());
 
-        // 이동 버튼 크기를 저장
-        move = new int[2];
-        move[0] = Integer.parseInt(st.nextToken());
-        move[1] = -Integer.parseInt(st.nextToken());
+        dx = new int[] {u, d};
+        visited = new boolean[1000001];
 
-        cache = new int[f + 1];
-        visited = new boolean[f + 1];
+        String result = bfs(s, g);
 
-        // bfs 탐색
-        int result = bfs(s);
-
-        if (result == -1) bw.write("use the stairs");
-        else bw.write(String.valueOf(result));
-
+        bw.write(result);
         bw.flush();
         bw.close();
     }
+
+    private static String bfs(int startNode, int endNode) {
+        Queue<Position> queue = new LinkedList<>();
+        queue.offer(new Position(startNode, 0));
+        visited[startNode] = true;
+
+        while (!queue.isEmpty()) {
+            Position position = queue.poll();
+
+            if (position.curFloor == endNode) {
+                return String.valueOf(position.depth);
+            }
+
+            for (int i = 0; i < dx.length; i++) {
+                int cFloor = position.curFloor + dx[i];
+
+                if (cFloor <= 0 || cFloor > f) {
+                    continue;
+                }
+
+                if (!visited[cFloor]) {
+                    visited[cFloor] = true;
+                    queue.offer(new Position(cFloor, position.depth + 1));
+                }
+            }
+        }
+
+        return "use the stairs";
+    }
+
+    private static class Position {
+
+        private final int curFloor;
+        private final int depth;
+
+        public Position(int curFloor, int depth) {
+            this.curFloor = curFloor;
+            this.depth = depth;
+        }
+
+    }
+
 }
