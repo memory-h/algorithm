@@ -1,49 +1,15 @@
 package bfs.silver.silver_1;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class _6118 {
 
-    static int n, m;
-    static ArrayList<ArrayList<Integer>> graph;
-    static int[] result; // 헛간 번호, 거리, 개수를 저장하는 배열
-    static boolean[] visited;
+    private static int n, m;
 
-    private static void bfs() {
-
-        Queue<Node> queue = new LinkedList<>();
-        queue.offer(new Node(1, 0));
-        visited[1] = true;
-
-        while (!queue.isEmpty()) {
-            Node node = queue.poll();
-
-            // 현재 거리가 이전 거리보다 크면 값을 갱신
-            if (node.weight > result[1]) {
-                result[0] = node.edge;
-                result[1] = node.weight;
-                result[2] = 1;
-            }
-
-            // 거리가 같다면 개수를 증가시키고, 더 작은 번호로 갱신
-            else if (node.weight == result[1]) {
-                result[2]++;
-                result[0] = Math.min(result[0], node.edge);
-            }
-
-            for (int value : graph.get(node.edge)) {
-                if (!visited[value]) {
-                    visited[value] = true;
-                    queue.offer(new Node(value, node.weight + 1));
-                }
-            }
-        }
-
-    }
+    private static List<List<Integer>> graph;
+    private static int[] barn;
+    private static boolean[] visited;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -53,11 +19,13 @@ public class _6118 {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
 
-        graph = new ArrayList<>();
-        for (int i = 0; i <= n; i++) graph.add(new ArrayList<>());
-
-        result = new int[3];
+        barn = new int[n + 1];
         visited = new boolean[n + 1];
+        graph = new ArrayList<>();
+
+        for (int i = 0; i <= n; i++) {
+            graph.add(new ArrayList<>());
+        }
 
         for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
@@ -69,21 +37,56 @@ public class _6118 {
             graph.get(b).add(a);
         }
 
-        bfs();
+        int maxDepth = bfs(1);
+        int hideBarn = 0;
+        int barnDistance = 0;
+        int maxBarnDepthCount = 0;
 
-        bw.write(result[0] + " " + result[1] + " " + result[2]);
+        for (int i = barn.length - 1; i >= 0; i--) {
+            if (barn[i] == maxDepth) {
+                hideBarn = i;
+                barnDistance = barn[i];
+                maxBarnDepthCount++;
+            }
+        }
+
+        bw.write(hideBarn + " " + barnDistance + " " + maxBarnDepthCount);
         bw.flush();
         bw.close();
     }
 
-    static class Node {
-        private int edge;
-        private int weight;
+    private static int bfs(int startNode) {
+        Queue<Position> queue = new LinkedList<>();
+        queue.offer(new Position(startNode, 0));
+        visited[startNode] = true;
+        int maxDepth = 0;
 
-        public Node(int edge, int weight) {
-            this.edge = edge;
-            this.weight = weight;
+        while (!queue.isEmpty()) {
+            Position position = queue.poll();
+            maxDepth = Math.max(maxDepth, position.depth);
+
+            for (int nextNode : graph.get(position.curNode)) {
+                if (!visited[nextNode]) {
+                    visited[nextNode] = true;
+                    barn[nextNode] = position.depth + 1;
+                    queue.offer(new Position(nextNode, position.depth + 1));
+                }
+            }
         }
+
+        return maxDepth;
+    }
+
+    private static class Position {
+
+        private final int curNode;
+        private final int depth;
+
+        public Position(int curNode, int depth) {
+            this.curNode = curNode;
+            this.depth = depth;
+        }
+
     }
 
 }
