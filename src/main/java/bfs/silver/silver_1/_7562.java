@@ -1,62 +1,92 @@
 package bfs.silver.silver_1;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+
+import java.io.*;
+import java.util.*;
+
 public class _7562 {
-    static Queue<int []> q = new LinkedList<>();
-    static int[][] graph;
-    static boolean[][] visited;
-    static int N, x, y, xp, yp;
-    static int[] dx = {1, -1, 2, -2, 1, -1, 2, -2};
-    static int[] dy = {2, 2, 1, 1, -2, -2, -1, -1};
 
-    public static void bfs(int x, int y){
-        q.offer(new int[] {x, y});
-        visited[x][y] = true;
+    private static int l;
 
-        while(!q.isEmpty()){
-            int[] xy = q.poll();
+    private static boolean[][] visited;
 
-            for(int i = 0; i < 8; i++){
-                int cx = xy[0] + dx[i];
-                int cy = xy[1] + dy[i];
+    private static int[] dx = {2, 1, 2, 1, -2, -1, -2, -1};
+    private static int[] dy = {1, 2, -1, -2, 1, 2, -1, -2};
 
-                if(cx >= 0 && cy >= 0 && cx < N && cy < N){
-                    if(!visited[cx][cy]){
-                        q.offer(new int[] {cx, cy});
-                        graph[cx][cy] = graph[xy[0]][xy[1]] + 1;
-                        visited[cx][cy] = true;
-                    }
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+
+        int testCases = Integer.parseInt(br.readLine());
+
+        while (testCases-- > 0) {
+            l = Integer.parseInt(br.readLine());
+
+            visited = new boolean[l][l];
+
+            st = new StringTokenizer(br.readLine());
+
+            int startX = Integer.parseInt(st.nextToken());
+            int startY = Integer.parseInt(st.nextToken());
+
+            st = new StringTokenizer(br.readLine());
+
+            int endX = Integer.parseInt(st.nextToken());
+            int endY = Integer.parseInt(st.nextToken());
+
+            int moveCount = bfs(startX, startY, endX, endY);
+
+            sb.append(moveCount).append("\n");
+        }
+
+        bw.write(sb.toString());
+        bw.flush();
+        bw.close();
+    }
+
+    private static int bfs(int startX, int startY, int endX, int endY) {
+        Queue<Position> queue = new LinkedList<>();
+        queue.offer(new Position(startX, startY, 0));
+        visited[startX][startY] = true;
+
+        while (!queue.isEmpty()) {
+            Position position = queue.poll();
+
+            if (position.x == endX && position.y == endY) {
+                return position.depth;
+            }
+
+            for (int i = 0; i < 8; i++) {
+                int cx = position.x + dx[i];
+                int cy = position.y + dy[i];
+
+                if (cx < 0 || cy < 0 || cx >= l || cy >= l) {
+                    continue;
+                }
+
+                if (!visited[cx][cy]) {
+                    visited[cx][cy] = true;
+                    queue.offer(new Position(cx, cy, position.depth + 1));
                 }
             }
         }
+
+        return 0;
     }
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
 
-        int T = Integer.parseInt(br.readLine());
+    private static class Position {
 
-        for(int i = 0; i < T; i++){
-            N = Integer.parseInt(br.readLine());
+        private final int x;
+        private final int y;
+        private final int depth;
 
-            graph = new int[N][N];
-            visited = new boolean[N][N];
-
-            st = new StringTokenizer(br.readLine());
-            x = Integer.parseInt(st.nextToken());
-            y = Integer.parseInt(st.nextToken());
-
-            st = new StringTokenizer(br.readLine());
-            xp = Integer.parseInt(st.nextToken());
-            yp = Integer.parseInt(st.nextToken());
-
-            bfs(x, y);
-
-            System.out.println(graph[xp][yp]);
+        public Position(int x, int y, int depth) {
+            this.x = x;
+            this.y = y;
+            this.depth = depth;
         }
+
     }
+
 }
