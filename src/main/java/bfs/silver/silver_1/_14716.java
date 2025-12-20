@@ -1,43 +1,17 @@
 package bfs.silver.silver_1;
 
 import java.io.*;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class _14716 {
 
-    static int m, n;
-    static int[][] graph;
-    static boolean[][] visited;
+    private static int m, n;
 
-    // 상, 하, 좌, 우, 대각선
-    static int[] dx = {1, 0, -1, 0, 1, -1, -1, 1};
-    static int[] dy = {0, 1, 0, -1, 1, 1, -1, -1};
+    private static int[][] graph;
+    private static boolean[][] visited;
 
-    private static void bfs(int x, int y) {
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{x, y});
-
-        while (!queue.isEmpty()) {
-            int[] node = queue.poll();
-
-            for (int i = 0; i < 8; i++) {
-                int nx = dx[i] + node[0];
-                int ny = dy[i] + node[1];
-
-                if (nx < 0 || ny < 0 || nx >= m || ny >= n) {
-                    continue;
-                }
-
-                if (graph[nx][ny] == 1 && !visited[nx][ny]) {
-                    visited[nx][ny] = true;
-                    queue.offer(new int[]{nx, ny});
-                }
-            }
-        }
-
-    }
+    private static int[] dx = {-1, 1, 0, 0, 1, 1, -1, -1};
+    private static int[] dy = {0, 0, -1, 1, 1, -1, 1, -1};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -58,21 +32,56 @@ public class _14716 {
             }
         }
 
-        int count = 0;
+        int totalCount = 0;
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-
-                // bfs 탐색하여 현수막에 있는 글자의 개수를 찾는다.
-                if (graph[i][j] == 1 && !visited[i][j]) {
+                if (!visited[i][j] && graph[i][j] == 1) {
                     bfs(i, j);
-                    count++;
+                    totalCount++;
                 }
             }
         }
 
-        bw.write(String.valueOf(count));
+        bw.write(String.valueOf(totalCount));
         bw.flush();
         bw.close();
     }
+
+    private static void bfs(int x, int y) {
+        Queue<Position> queue = new LinkedList<>();
+        queue.offer(new Position(x, y));
+        visited[x][y] = true;
+
+        while (!queue.isEmpty()) {
+            Position position = queue.poll();
+
+            for (int i = 0; i < 8; i++) {
+                int cx = position.x + dx[i];
+                int cy = position.y + dy[i];
+
+                if (cx < 0 || cy < 0 || cx >= m || cy >= n) {
+                    continue;
+                }
+
+                if (!visited[cx][cy] && graph[cx][cy] == 1) {
+                    visited[cx][cy] = true;
+                    queue.offer(new Position(cx, cy));
+                }
+            }
+        }
+    }
+
+    private static class Position {
+
+        private final int x;
+        private final int y;
+
+        public Position(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+    }
+
 }
